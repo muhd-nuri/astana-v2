@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { Award, Smartphone } from 'lucide-react';
 import { useLocale } from '@/i18n/LocaleContext';
 import { env } from '@/lib/env';
 
@@ -59,25 +60,57 @@ export function Footer() {
       </div>
 
       <div className="relative mx-auto max-w-[1280px] px-6 pb-10 pt-16 md:px-10 md:pb-12 md:pt-24">
-        {/* Manifesto */}
-        <p className="font-display max-w-3xl text-2xl font-semibold leading-snug md:text-3xl">
-          {t.footer.manifesto}
-        </p>
-
-        <div className="mt-14 grid grid-cols-2 gap-10 md:grid-cols-4 md:gap-8">
-          <FooterColumn title={cols.product.title} links={cols.product.links} />
-          <FooterColumn title={cols.company.title} links={cols.company.links} />
-          <FooterColumn title={cols.help.title} links={cols.help.links} />
-          <FooterColumn title={cols.legal.title} links={cols.legal.links} />
+        {/* Manifesto + badges */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-12">
+          <div className="md:col-span-7">
+            <Link
+              href="/"
+              className="font-display inline-flex text-2xl font-extrabold tracking-tight text-[var(--color-page-bg)]"
+            >
+              Astana POS<span className="text-[var(--color-brand-light)]">.</span>
+            </Link>
+            <p className="font-display mt-5 max-w-2xl text-xl font-semibold leading-snug md:text-2xl">
+              {t.footer.manifesto}
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
+                <Award className="h-3.5 w-3.5" aria-hidden="true" />
+                {t.footer.badges[0]}
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 px-3 py-1.5 text-xs font-medium text-white/80">
+                <Smartphone className="h-3.5 w-3.5" aria-hidden="true" />
+                {t.footer.badges[1]}
+              </span>
+            </div>
+          </div>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-4 border-t border-white/10 pt-8 md:grid-cols-2 md:items-end">
-          <div>
-            <p className="font-body text-xs uppercase tracking-[0.12em] text-white/60">
-              {t.footer.addressTitle}
-            </p>
-            <p className="mt-2 max-w-md text-sm leading-relaxed text-white/80">
-              {t.footer.address}
+        <div className="mt-14 grid grid-cols-2 gap-8 md:grid-cols-3 md:gap-12">
+          <FooterColumn title={cols.produk.title} links={cols.produk.links} />
+          <FooterColumn title={cols.syarikat.title} links={cols.syarikat.links} />
+          <FooterColumn title={cols.sumber.title} links={cols.sumber.links} />
+        </div>
+
+        <hr className="mt-14 border-t border-[var(--color-brand-mid)]/30" />
+
+        <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 md:items-center">
+          <div className="text-xs text-white/60">{t.footer.copyright}</div>
+          <div className="text-xs leading-relaxed text-white/70 md:text-center">
+            <p>{t.footer.address}</p>
+            <p className="mt-2 inline-flex items-center gap-4">
+              <Link
+                href="/legal/privacy"
+                className="text-white/70 transition-colors hover:text-white"
+              >
+                {t.footer.privacy}
+              </Link>
+              <span className="text-white/30">·</span>
+              <Link
+                href="/legal/terms"
+                className="text-white/70 transition-colors hover:text-white"
+              >
+                {t.footer.terms}
+              </Link>
             </p>
           </div>
           <div className="md:justify-self-end">
@@ -91,10 +124,6 @@ export function Footer() {
             </a>
           </div>
         </div>
-
-        <div className="mt-8 flex items-center justify-between border-t border-white/10 pt-6 text-xs text-white/60">
-          <span>{t.footer.copyright}</span>
-        </div>
       </div>
     </footer>
   );
@@ -102,7 +131,7 @@ export function Footer() {
 
 type FooterLink = { label: string; href: string; external?: boolean };
 
-function FooterColumn({ title, links }: { title: string; links: readonly FooterLink[] }) {
+function FooterColumn({ title, links }: { title: string; links: ReadonlyArray<FooterLink> }) {
   return (
     <div>
       <p className="font-display text-xs font-bold uppercase tracking-[0.12em] text-white/70">

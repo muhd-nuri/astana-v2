@@ -1,18 +1,28 @@
-import { HeroLiveDashboard } from '@/components/sections/home/HeroLiveDashboard';
-import { IndustryStrip } from '@/components/sections/home/IndustryStrip';
-import { WhyAstanaPos } from '@/components/sections/home/WhyAstanaPos';
-import { FeatureDeepDiveTeaser } from '@/components/sections/home/FeatureDeepDiveTeaser';
-import { ProofStrip } from '@/components/sections/home/ProofStrip';
+import { Hero } from '@/components/sections/home/Hero';
+import { ModuleMarquee } from '@/components/sections/home/ModuleMarquee';
+import { Industries } from '@/components/sections/home/Industries';
+import { Pricing } from '@/components/sections/home/Pricing';
+import { HardwareCrossSell } from '@/components/sections/home/HardwareCrossSell';
+import { Timeline } from '@/components/sections/home/Timeline';
+import { Reasons } from '@/components/sections/home/Reasons';
+import { Steps } from '@/components/sections/home/Steps';
+import { Counters } from '@/components/sections/home/Counters';
+import { Testimonials } from '@/components/sections/home/Testimonials';
 import { FinalCTA } from '@/components/sections/home/FinalCTA';
 
 export default function HomePage() {
   return (
     <main>
-      <HeroLiveDashboard />
-      <IndustryStrip />
-      <WhyAstanaPos />
-      <FeatureDeepDiveTeaser />
-      <ProofStrip />
+      <Hero />
+      <ModuleMarquee />
+      <Industries />
+      <Pricing />
+      <HardwareCrossSell />
+      <Timeline />
+      <Reasons />
+      <Steps />
+      <Counters />
+      <Testimonials />
       <FinalCTA />
     </main>
   );

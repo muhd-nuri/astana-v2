@@ -1,16 +1,16 @@
 'use client';
 
-import { MessageCircle, Calendar } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import { useLocale } from '@/i18n/LocaleContext';
 import { CTAButton } from '@/components/shared/CTAButton';
-import { whatsappLink, env } from '@/lib/env';
+import { env, whatsappLink } from '@/lib/env';
 
 export function FinalCTA() {
   const { t } = useLocale();
 
   return (
     <section
-      id="contact"
+      id="cta"
       className="relative overflow-hidden text-[var(--color-page-bg)]"
       style={{
         background:
@@ -42,40 +42,39 @@ export function FinalCTA() {
           {t.finalCta.eyebrow}
         </p>
         <h2 className="font-display mt-4 max-w-3xl text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] tracking-tight">
-          {t.finalCta.heading}
+          {t.finalCta.headline}
         </h2>
         <p className="mt-5 max-w-xl text-white/80 md:text-lg">{t.finalCta.sub}</p>
 
         <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:justify-center">
-          <CTAButton
-            variant="primary"
-            href={whatsappLink()}
-            external
-            icon={<MessageCircle className="h-4 w-4" />}
-          >
+          <CTAButton variant="primary" href={env.hubRegistrationUrl} external>
             {t.finalCta.ctaPrimary}
           </CTAButton>
           <CTAButton
             variant="secondary"
-            href={env.calendlyUrl || '#contact'}
-            external={Boolean(env.calendlyUrl)}
-            icon={<Calendar className="h-4 w-4" />}
+            href={whatsappLink()}
+            external
+            icon={<MessageCircle className="h-4 w-4" />}
             className="border-white/30 !text-white hover:!border-white hover:!text-white"
           >
             {t.finalCta.ctaSecondary}
           </CTAButton>
         </div>
 
-        {env.playStoreUrl && (
-          <a
-            href={env.playStoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-6 inline-flex items-center gap-2 text-xs font-medium text-white/70 underline-offset-4 hover:text-white hover:underline"
-          >
-            {t.finalCta.ctaPlayStore}
-          </a>
-        )}
+        {/* Mini stats */}
+        <ul className="mt-12 grid w-full max-w-2xl grid-cols-1 gap-4 sm:grid-cols-3">
+          {t.finalCta.stats.map((s) => (
+            <li
+              key={s.label}
+              className="rounded-2xl border border-white/15 bg-white/5 px-4 py-4 text-center backdrop-blur"
+            >
+              <p className="font-display tabular-nums text-xl font-extrabold leading-none text-white md:text-2xl">
+                {s.value}
+              </p>
+              <p className="mt-2 text-xs text-white/70">{s.label}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

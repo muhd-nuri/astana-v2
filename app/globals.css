@@ -54,6 +54,12 @@
   --text-dashboard-label: 0.75rem;
   --text-dashboard-label--line-height: 1.3;
   --text-dashboard-label--letter-spacing: 0.08em;
+  --text-counter: clamp(2.5rem, 6vw, 4.5rem);
+  --text-counter--line-height: 1;
+  --text-counter--font-weight: 800;
+  --text-marquee-chip: 0.875rem;
+  --text-marquee-chip--line-height: 1;
+  --text-marquee-chip--font-weight: 600;
 
   /* ---------- Spacing ---------- */
   --spacing-section: 6rem;
@@ -206,10 +212,29 @@
 .animate-mesh-drift-2 { animation: mesh-drift-2 110s ease-in-out infinite; }
 .animate-mesh-drift-3 { animation: mesh-drift-3 100s ease-in-out infinite; }
 
+/* ---------- Marquee (Section 2) ---------- */
+@keyframes marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+  will-change: transform;
+}
+.animate-marquee:hover,
+.animate-marquee.paused {
+  animation-play-state: paused;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .animate-mesh-drift-1,
   .animate-mesh-drift-2,
-  .animate-mesh-drift-3 {
+  .animate-mesh-drift-3,
+  .animate-marquee {
     animation: none;
   }
 }
+
+/* Utility — hide scrollbars on horizontal-scroll strips */
+.no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }

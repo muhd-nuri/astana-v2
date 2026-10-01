@@ -2,11 +2,11 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Menu, MessageCircle } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { useLocale } from '@/i18n/LocaleContext';
-import { whatsappLink } from '@/lib/env';
+import { env } from '@/lib/env';
 import { cn } from '@/lib/utils';
 import { LanguageToggle } from './LanguageToggle';
 import { CTAButton } from './CTAButton';
@@ -24,12 +24,12 @@ export function Navbar() {
   }, []);
 
   const links = [
-    { label: t.nav.features, href: '/#features' },
-    { label: t.nav.industries, href: '/#industries' },
-    { label: t.nav.pricing, href: '/#pricing' },
-    { label: t.nav.about, href: '/#about' },
+    { label: t.nav.produk, href: '/#features' },
+    { label: t.nav.pelan, href: '/#pricing' },
+    { label: t.nav.industri, href: '/#industries' },
+    { label: t.nav.tentang, href: '/about' },
+    { label: t.nav.hubungi, href: '/contact' },
     { label: t.nav.blog, href: '/blog' },
-    { label: t.nav.contact, href: '/#contact' },
   ];
 
   return (
@@ -52,7 +52,7 @@ export function Navbar() {
         </Link>
 
         {/* Centre nav */}
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-7 lg:flex">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -65,16 +65,23 @@ export function Navbar() {
         </nav>
 
         {/* Right side */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           <LanguageToggle className="hidden sm:inline-flex" />
           <CTAButton
-            variant="primary"
-            href={whatsappLink()}
+            variant="ghost"
+            href={env.hubLoginUrl}
             external
-            icon={<MessageCircle className="h-4 w-4" />}
+            className="hidden md:inline-flex !px-3 text-sm"
+          >
+            {t.nav.logMasuk}
+          </CTAButton>
+          <CTAButton
+            variant="primary"
+            href={env.hubRegistrationUrl}
+            external
             className="hidden md:inline-flex"
           >
-            {t.nav.cta}
+            {t.nav.cubaPercuma}
           </CTAButton>
 
           {/* Mobile menu */}
@@ -111,15 +118,22 @@ export function Navbar() {
                   </Link>
                 ))}
               </nav>
-              <div className="mt-8">
+              <div className="mt-8 space-y-3">
                 <CTAButton
                   variant="primary"
-                  href={whatsappLink()}
+                  href={env.hubRegistrationUrl}
                   external
-                  icon={<MessageCircle className="h-4 w-4" />}
                   className="w-full"
                 >
-                  {t.nav.cta}
+                  {t.nav.cubaPercuma}
+                </CTAButton>
+                <CTAButton
+                  variant="secondary"
+                  href={env.hubLoginUrl}
+                  external
+                  className="w-full"
+                >
+                  {t.nav.logMasuk}
                 </CTAButton>
               </div>
             </SheetContent>

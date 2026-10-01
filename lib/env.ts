@@ -9,6 +9,8 @@ export const env = {
     process.env.NEXT_PUBLIC_HUB_REGISTRATION_URL ?? 'https://hub.astanabiz.com/registration_form',
   hubLoginUrl: process.env.NEXT_PUBLIC_HUB_LOGIN_URL ?? 'https://hub.astanabiz.com/',
   mcbizUrl: process.env.NEXT_PUBLIC_MCBIZ_URL ?? 'https://mcbiz.astanabiz.com',
+  mcbizProductsUrl:
+    process.env.NEXT_PUBLIC_MCBIZ_PRODUCTS_URL ?? 'https://mcbiz.astanabiz.com/products',
 } as const;
 
 export function whatsappLink(message?: string): string {

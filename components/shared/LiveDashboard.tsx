@@ -170,10 +170,13 @@ export function LiveDashboard({ variant = 'hero' }: { variant?: Variant }) {
           <>
             <OrdersCard
               label={t.dashboard.activeOrders}
-              countLabel={`12 ${t.dashboard.activeOrdersCount}`}
-              orderLabels={t.dashboard.orderLabels}
+              countLabel={t.dashboard.activeOrdersCount}
+              orders={t.dashboard.activeOrdersList}
             />
-            <TopItemsCard label={t.dashboard.topItems} />
+            <TopItemsCard
+              label={t.dashboard.topItems}
+              items={t.dashboard.topItemsList}
+            />
             <InventoryCard
               label={t.dashboard.inventoryHealth}
               healthy={t.dashboard.inventoryHealthy}
@@ -188,8 +191,8 @@ export function LiveDashboard({ variant = 'hero' }: { variant?: Variant }) {
           <>
             <OrdersCard
               label={t.dashboard.activeOrders}
-              countLabel={`12 ${t.dashboard.activeOrdersCount}`}
-              orderLabels={t.dashboard.orderLabels}
+              countLabel={t.dashboard.activeOrdersCount}
+              orders={t.dashboard.activeOrdersList}
             />
             <InventoryCard
               label={t.dashboard.inventoryHealth}
@@ -311,17 +314,12 @@ function SparkCard({ label, subtitle }: { label: string; subtitle: string }) {
 function OrdersCard({
   label,
   countLabel,
-  orderLabels,
+  orders,
 }: {
   label: string;
   countLabel: string;
-  orderLabels: { table: string; takeaway: string; branch: string };
+  orders: ReadonlyArray<string>;
 }) {
-  const rows = [
-    { id: '#1247', meta: `${orderLabels.table} 5` },
-    { id: '#1246', meta: orderLabels.takeaway },
-    { id: '#1245', meta: `${orderLabels.branch} 02` },
-  ];
   return (
     <CardShell>
       <div className="flex items-center justify-between">
@@ -331,48 +329,56 @@ function OrdersCard({
         </span>
       </div>
       <ul className="mt-2 space-y-1.5">
-        {rows.map((r) => (
-          <li
-            key={r.id}
-            className="flex items-center justify-between rounded-md bg-[var(--color-surface)] px-2 py-1.5 text-[0.7rem] text-[var(--color-ink)] md:text-xs"
-          >
-            <span className="font-display font-bold tabular-nums">{r.id}</span>
-            <span className="text-[var(--color-text-muted)]">{r.meta}</span>
-          </li>
-        ))}
+        {orders.map((row) => {
+          const [id, meta] = row.split(' · ');
+          return (
+            <li
+              key={row}
+              className="flex items-center justify-between rounded-md bg-[var(--color-surface)] px-2 py-1.5 text-[0.7rem] text-[var(--color-ink)] md:text-xs"
+            >
+              <span className="font-display font-bold tabular-nums">{id}</span>
+              <span className="text-[var(--color-text-muted)]">{meta ?? ''}</span>
+            </li>
+          );
+        })}
       </ul>
     </CardShell>
   );
 }
 
-function TopItemsCard({ label }: { label: string }) {
-  const items = [
-    { name: 'Nasi Lemak', count: 47, pct: 100 },
-    { name: 'Teh Ais', count: 38, pct: 80 },
-    { name: 'Roti John', count: 24, pct: 50 },
-  ];
+function TopItemsCard({
+  label,
+  items,
+}: {
+  label: string;
+  items: ReadonlyArray<{ name: string; count: number }>;
+}) {
+  const max = items.reduce((acc, it) => Math.max(acc, it.count), 1);
   return (
     <CardShell>
       <CardLabel>{label}</CardLabel>
       <ul className="mt-2.5 space-y-2">
-        {items.map((it) => (
-          <li key={it.name}>
-            <div className="flex items-center justify-between text-[0.7rem] text-[var(--color-ink)] md:text-xs">
-              <span className="truncate font-medium">{it.name}</span>
-              <span className="tabular-nums text-[var(--color-text-muted)]">{it.count}</span>
-            </div>
-            <div className="mt-1 h-1 overflow-hidden rounded-full bg-[var(--color-border-hairline)]/60">
-              <div
-                className="h-full rounded-full"
-                style={{
-                  width: `${it.pct}%`,
-                  background:
-                    'linear-gradient(90deg, var(--color-brand-primary), var(--color-brand-mid))',
-                }}
-              />
-            </div>
-          </li>
-        ))}
+        {items.map((it) => {
+          const pct = Math.round((it.count / max) * 100);
+          return (
+            <li key={it.name}>
+              <div className="flex items-center justify-between text-[0.7rem] text-[var(--color-ink)] md:text-xs">
+                <span className="truncate font-medium">{it.name}</span>
+                <span className="tabular-nums text-[var(--color-text-muted)]">{it.count}</span>
+              </div>
+              <div className="mt-1 h-1 overflow-hidden rounded-full bg-[var(--color-border-hairline)]/60">
+                <div
+                  className="h-full rounded-full"
+                  style={{
+                    width: `${pct}%`,
+                    background:
+                      'linear-gradient(90deg, var(--color-brand-primary), var(--color-brand-mid))',
+                  }}
+                />
+              </div>
+            </li>
+          );
+        })}
       </ul>
     </CardShell>
   );

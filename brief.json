@@ -1,0 +1,64 @@
+{
+  "id": "sub_75d80920-7c21-4dbf-8975-35b94957026e",
+  "submittedAt": "2026-05-14T07:28:08.883Z",
+  "businessInfo": {
+    "businessName": "Astana POS",
+    "tagline": "Unlimited Sales History, Features, Employee & Advanced Inventory Management. Don't limit your growth",
+    "fullDescription": "Small business owners (SMEs) can manage and monitor sales, inventory, and employees anytime and anywhere. Grow sales by 300% while improving operations and customer satisfaction, which boosts revenue and encourages repeat customers. Simplify it all with LHDN E-Invoicing compliance in Malaysia",
+    "threeWords": "Unlimited, Don't Limit Your Growth",
+    "targetAudience": "To all businesses owner SME across the world especially in Malaysia"
+  },
+  "siteGoals": {
+    "siteType": "Brochure Site",
+    "primaryGoal": "Send whatsapp",
+    "bookingNeed": "Yes",
+    "selfManageContent": "No — I'll contact Mat Coding whenever I need changes"
+  },
+  "ecommerce": null,
+  "servicesProducts": {
+    "servicesList": "1. Software POS point of sales. Cloud Services Monitor and manage unlimited sales, employees, inventory, reports and multiple stores.\n\n2. Work Offline \nKeep recording sales and run operation even when offline and sync database to cloud when online.\n\n3. Advanced Inventory Management\nCreate purchase orders, goods receive notes, estimate, inventory history report and manage stock. \n\n4. Employee Management\nCreate users, commision staff, manage access right, login alerts and sales by employee. \n\n5. Financial Management\nAutomation sales summary with an unrestricted date filter to accurately calculate net profit before accounting for the cost of goods sold, operational expenditures, and overhead.\n\n\n6.Marketing Management\nCollect database information to identify the most popular and best-selling items, and analyze customer behavior to enhance upselling strategies and utilize redemption points to foster loyalty.\n"
+  },
+  "designBranding": {
+    "logo": {
+      "url": "https://fsu48ilpaoxjmr9x.public.blob.vercel-storage.com/submissions/IMG_0406-6UDkge3Ydd8DU0abVg2YIbKlXPlPlG.png",
+      "size": 67122,
+      "filename": "IMG_0406.png",
+      "contentType": "image/png"
+    },
+    "colorScheme": "Same as mcbiz.astanabiz.com",
+    "hasBrandGuide": "Yes",
+    "brandGuide": null,
+    "competitorRefs": "Salesplay & Loyverse",
+    "otherRefs": "Salesplay.com & Loyverse.com"
+  },
+  "contentMedia": {
+    "photos": [],
+    "photographyStatus": "Yes — I have high-quality photos ready",
+    "copywriting": "I have all my content written and ready"
+  },
+  "contact": {
+    "phone": "+0333965656",
+    "businessEmail": "admin@astanabiz.com",
+    "address": "(HQ) No 19A Jalan Astana E13/E, Pusat Niaga Astana Alam, 42300 Bandar Puncak Alam, Selangor\n\n(Branch)5-P-02, Tingkat 5, Kota Bharu City Point, Jalan Ismail Hilir, 15000 Kota Bharu, Kelantan",
+    "mapsUrl": "",
+    "operatingHours": "Monday-Friday : 9am-5pm",
+    "socialLinks": ""
+  },
+  "technical": {
+    "hasDomain": "Yes",
+    "domainOwned": "Astanabiz.com",
+    "domainDesired": "",
+    "needsProEmail": "No",
+    "proEmailDetails": "",
+    "blogOrNews": "Yes",
+    "languages": [
+      "English",
+      "Bahasa Malaysia"
+    ],
+    "languagesOther": "",
+    "whatsappIntegration": "Yes",
+    "analytics": "Yes",
+    "thirdPartyIntegrations": "Set consultation booking",
+    "additionalNotes": "I want revamp to look more modern and gain trust from customers to subscribe."
+  }
+}
